@@ -111,19 +111,14 @@ l/e/a/u/q>\
                 lookup(filename)
             if mode == 'e':
                 while True:
-                    temp = input('')
-                    if temp == '^':
-                        break
-                    string = temp
+                    string = input('你修改的那一项含有：')
                     lines = find(filename, string)
+                    print('查找到以下结果：')
                     for i in lines:
                         print('#{}:   {}'.format(
                             i, lookup_line(filename, i)), end='')
-                    temp = input('')
-                    if temp == '^':
-                        break
-                    line = int(temp)
-                    string = input('')
+                    line = int(input('输入行号：'))
+                    string = input('将这一行修改为：')
                     edit(filename, line, string)
                     # temp = input("你想替换那一项？（'^'以退出）")
                     # if temp == '^':
@@ -136,14 +131,8 @@ l/e/a/u/q>\
                     # edit(filename, source, replaced)
             if mode == 'a':
                 while True:
-                    temp = input("你想增加什么？（'^'以退出）")
-                    if temp == '^':
-                        break
-                    domain_name = temp
-                    temp = input("中文：（'^'以留空）")
-                    if temp == '^':
-                        explain = '<unkonw>'
-                    explain = temp
+                    domain_name = input("你想增加什么？（'^'以退出）")
+                    explain = input("中文：（'^'以留空）")
                     add(filename, domain_name, explain)
             if mode == 'u':
                 update()
